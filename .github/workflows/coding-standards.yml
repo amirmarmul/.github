@@ -2,13 +2,6 @@ name: fix code styling
 
 on:
   workflow_call:
-    inputs:
-      php-version:
-        default: '8.1'
-        type: string
-      commit-message:
-        default: Fix code styling
-        type: string 
 
 jobs:
   lint:
@@ -21,7 +14,7 @@ jobs:
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ inputs.php-version }}
+          php-version: '8.1'
           extensions: json, dom, curl, libxml, mbstring
           coverage: none
       
@@ -34,5 +27,5 @@ jobs:
       - name: Commit linted files 
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: ${{ inputs.commit-message }}
+          commit_message: 'style: fix code styling'
           
